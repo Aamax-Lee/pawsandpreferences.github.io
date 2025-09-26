@@ -1,0 +1,42 @@
+/* Loading */
+.loading-container {
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loading-container h2 {
+  color: lightgray;
+  margin-bottom: 1.5rem;
+}
+
+.loading-animation {
+  margin: 2rem auto;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-info {
+  margin-top: 1rem;
+  color: #666;
+}
