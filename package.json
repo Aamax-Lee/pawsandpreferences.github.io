@@ -1,6 +1,6 @@
 {
+  "homepage": "https://aamax-lee.github.io/pawsandpreferences.github.io/",
   "name": "frontend",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
