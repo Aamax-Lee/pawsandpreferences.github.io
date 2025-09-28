@@ -123,6 +123,7 @@ function Home() {
           onSwipe={(_index, direction) => {
             console.log(`Swiped cat index ${_index} to ${direction}`);
             setAnimationDirection(direction);
+            addToScrolled();
             if (direction === "left") {
               onLike(cats[_index]);
             }
