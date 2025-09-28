@@ -15,8 +15,13 @@ import { useNavigate } from "react-router-dom";
 
 function Home() {
   const navigate = useNavigate();
-  const { isFavourite, addToFavourites, removeFromFavourites } =
-    useCatContext();
+  const {
+    isFavourite,
+    addToFavourites,
+    removeFromFavourites,
+    catsScrolled,
+    addToScrolled,
+  } = useCatContext();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animationDirection, setAnimationDirection] = useState("left");
 
@@ -64,6 +69,7 @@ function Home() {
       // Small delay to ensure direction is set before index changes
       setTimeout(() => {
         setCurrentIndex((prev) => prev + 1);
+        addToScrolled();
       }, 0);
     }
   };
@@ -74,6 +80,7 @@ function Home() {
       // Small delay to ensure direction is set before index changes
       setTimeout(() => {
         setCurrentIndex((prev) => prev + 1);
+        addToScrolled();
       }, 0);
     }
   };
@@ -153,17 +160,20 @@ function Home() {
         </DeckCards>
         <DeckEmpty>
           <div className="flex flex-col items-center gap-4">
-            <p className="text-lg font-semibold text-gray-700">No more cats</p>
+            <p className="text-lg font-semibold text-gray-300">No more cats</p>
 
             <div className="flex gap-6">
               {/* Redirect to Favourites */}
-              <button onClick={() => navigate("/favourites")}>
+              <button
+                onClick={() => navigate("/favourites")}
+                className="px-4 py-2 bg-orange-600 text-white rounded-lg shadow hover:bg-orange-700 transition"
+              >
                 View Favourites
               </button>
 
               {/* Load More Cats */}
               <button
-                onClick={loadMoreCats} 
+                onClick={loadMoreCats}
                 className="px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition"
               >
                 Load More
@@ -179,14 +189,14 @@ function Home() {
         <div
           className="bg-[rgba(255,255,255,0.05)] text-white rounded-b-xl shadow-md p-4 flex flex-col items-center gap-3"
           style={{
-            borderBottomLeftRadius: "1rem", 
+            borderBottomLeftRadius: "1rem",
             borderBottomRightRadius: "1rem",
             // clipPath: "inset(0 round 0 0 0 0)",
           }}
         >
           {/* Swipe Count */}
           <p className="text-xl text-gray-300">
-            Cats Swiped: <span className="font-semibold">{currentIndex}</span>
+            Cats Swiped: <span className="font-semibold">{catsScrolled}</span>
           </p>
 
           {/* Buttons */}

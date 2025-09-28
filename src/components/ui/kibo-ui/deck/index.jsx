@@ -228,13 +228,13 @@ const DeckCard = ({ children, onSwipe, threshold, style, exitDirection }) => {
         className="absolute top-3 right-3"
         style={{ opacity: heartOpacity }}
       >
-        <Heart className="h-20 w-20 text-pink-500 fill-current" />
+        <Heart className="h-40 w-20 text-pink-500 fill-current" />
       </motion.div>
       <motion.div
         className="absolute top-3 left-3"
         style={{ opacity: crossOpacity }}
       >
-        <X className="h-20 w-20 text-red-500 fill-current" />
+        <X className="h-40 w-20 text-red-500 fill-current" />
       </motion.div>
     </motion.div>
   );

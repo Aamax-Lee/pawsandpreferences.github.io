@@ -6,17 +6,31 @@ export const useCatContext = () => useContext(CatContext);
 
 export const CatProvider = ({ children }) => {
   const [favourites, setFavourites] = useState([]);
+  const [catsScrolled, setCatsScrolled] = useState(0);
 
   useEffect(() => {
     const storedFavs = localStorage.getItem("favourites");
     if (storedFavs) {
       setFavourites(JSON.parse(storedFavs));
     }
+
+    const storedScrolled = localStorage.getItem("catsScrolled");
+    if (storedScrolled) {
+      setCatsScrolled(JSON.parse(storedScrolled));
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
   }, [favourites]);
+
+  useEffect(() => {
+    localStorage.setItem("catsScrolled", JSON.stringify(catsScrolled));
+  }, [catsScrolled]);
+
+  const addToScrolled = () => {
+    setCatsScrolled((prev) => prev + 1);
+  }
 
   const addToFavourites = (cat) => {
     setFavourites((prev) => [...prev, cat]);
@@ -40,6 +54,8 @@ export const CatProvider = ({ children }) => {
     removeFromFavourites,
     isFavourite,
     reorderFavourites,
+    addToScrolled,
+    catsScrolled,
   };
 
   return <CatContext.Provider value={value}>{children}</CatContext.Provider>;

@@ -9,9 +9,6 @@ function LoadingStatus() {
         <div className="spinner"></div>
       </div>
 
-      {/* <p className="loading-info">
-            Please wait while we generate your story...
-        </p> */}
     </div>
   );
 }
